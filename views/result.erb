@@ -11,7 +11,7 @@
       <th>Загальний внесок</th>
       <th>Залишок кредиту</th>
     </tr>
-  <% Results.each_with_index do |(pay, pay_percents, pay_full, left), month| %>
+  <% @Results.each_with_index do |(pay, pay_percents, pay_full, left), month| %>
     <tr>
       <td> <%= month +1 %></td>
       <td> <%= pay.round(2) %></td>
@@ -22,9 +22,9 @@
   <% end %>
     <tr>
       <td></td>
-      <td><%= Results.inject(0) { |sum, (x,_,_,_)| sum + x }.round(2) %></td>
-      <td><%= Results.inject(0) { |sum, (_,x,_,_,_)| sum + x }.round(2) %></td>
-      <td><%= Results.inject(0) { |sum, (_,_,x,_)| sum + x }.round(2) %></td>
+      <td><%= sum_round(@Results, 0) %></td>
+      <td><%= sum_round(@Results, 1) %></td>
+      <td><%= sum_round(@Results, 2) %></td>
       <td></td>
     </tr>
 </table>

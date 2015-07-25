@@ -1,0 +1,30 @@
+<p>Процентна ставка: <%= @percents %> %</p>
+<p>Сума кредиту: <%= @sum %></p>
+<p>Тривалість: <%= @time %> </p>
+<p><a href="/">Назад</a></p>
+
+<table class="table table-hover table-striped">
+    <tr>
+      <th>Номер місяця</th>
+      <th>Погашення кредиту</th>
+      <th>Погашення %</th>
+      <th>Загальний внесок</th>
+      <th>Залишок кредиту</th>
+    </tr>
+  <% Results.each_with_index do |(pay, pay_percents, pay_full, left), month| %>
+    <tr>
+      <td> <%= month +1 %></td>
+      <td> <%= pay.round(2) %></td>
+      <td> <%= pay_percents.round(2) %></td>
+      <td> <%= pay_full.round(2) %></td>
+      <td> <%= left.round(2) %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td></td>
+      <td><%= Results.inject(0) { |sum, (x,_,_,_)| sum + x }.round(2) %></td>
+      <td><%= Results.inject(0) { |sum, (_,x,_,_,_)| sum + x }.round(2) %></td>
+      <td><%= Results.inject(0) { |sum, (_,_,x,_)| sum + x }.round(2) %></td>
+      <td></td>
+    </tr>
+</table>

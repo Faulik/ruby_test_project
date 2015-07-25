@@ -1,0 +1,27 @@
+  <form action="calc" method="post">
+      <dl class="dl-horizontal">
+        <h3>Кредитні відомості:</h3>
+          <dt>Процентна ставка (%):</dt>
+          <dd><input type="text" class="form-control" name="percents" placeholder="1.5" required/></dd>
+          <dt>Сума кредиту:</dt>
+          <dd><input type="text" class="form-control" name="sum" placeholder="10000" required/></dd>
+          <dt>Метод погашення кредиту:</dt>
+          <dd>
+            <label class="radio">
+              <input type="radio" name="payOff" value="Usual" checked/>
+              Стандартний
+            </label>
+            <br/>
+            <label class="radio">
+              <input type="radio" name="payOff" value="Equal" />
+              Ануїтетний (рівними частинами)
+            </label>
+          </dd>
+          <dt>Термін кредиту (в місяцях)</dt>     
+          <dd><input type="text" class="form-control" name="time" placeholder="12" required/></dd>
+          <dt>Графік платежів:</dt>
+          <dd>
+            <button type='submit' class="btn btn-primary">Побудувати</button>
+          </dd>
+      </dl>
+  </form>

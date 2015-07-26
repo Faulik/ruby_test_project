@@ -1,8 +1,3 @@
-<p>Процентна ставка: <%= @percents %> %</p>
-<p>Сума кредиту: <%= @sum %></p>
-<p>Тривалість: <%= @time %> </p>
-<p><a href="/">Назад</a></p>
-
 <table class="table table-hover table-striped">
     <tr>
       <th>Номер місяця</th>
@@ -11,20 +6,20 @@
       <th>Загальний внесок</th>
       <th>Залишок кредиту</th>
     </tr>
-  <% @Results.each_with_index do |(pay, pay_percents, pay_full, left), month| %>
+  <% @months.each_with_index do |(credit_payment, percentages_payment, full_payment, ammount_left), month| %>
     <tr>
-      <td> <%= month +1 %></td>
-      <td> <%= pay.round(2) %></td>
-      <td> <%= pay_percents.round(2) %></td>
-      <td> <%= pay_full.round(2) %></td>
-      <td> <%= left.round(2) %></td>
+      <td> <%= month + 1 %></td>
+      <td> <%= credit_payment.round(2) %></td>
+      <td> <%= percentages_payment.round(2) %></td>
+      <td> <%= full_payment.round(2) %></td>
+      <td> <%= ammount_left.round(2) %></td>
     </tr>
   <% end %>
     <tr>
       <td></td>
-      <td><%= sum_round(@Results, 0) %></td>
-      <td><%= sum_round(@Results, 1) %></td>
-      <td><%= sum_round(@Results, 2) %></td>
+      <% (0..2).each do |value| %>
+        <td><%= sum_round(@months, value) %></td>
+      <% end %>
       <td></td>
     </tr>
 </table>

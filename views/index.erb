@@ -2,26 +2,39 @@
       <dl class="dl-horizontal">
         <h3>Кредитні відомості:</h3>
           <dt>Процентна ставка (%):</dt>
-          <dd><input type="text" class="form-control" name="percents" placeholder="1.5" required/></dd>
+          <dd>
+            <input type="text" class="form-control" name="percentages" placeholder="1.5" pattern="\d+(\.\d{0,5})?"
+                   value="<%=  @percentages || '' %>" required/>
+          </dd>
           <dt>Сума кредиту:</dt>
-          <dd><input type="text" class="form-control" name="sum" placeholder="10000" required/></dd>
+          <dd>
+            <input type="text" class="form-control" name="ammount" placeholder="10000" pattern="\d+(\.\d{0,2})?"
+                   value="<%=  @ammount || '' %>" required/>
+          </dd>
           <dt>Метод погашення кредиту:</dt>
           <dd>
             <label class="radio">
-              <input type="radio" name="payOff" value="Usual" checked/>
+              <input type="radio" name="payments_type" value="Usual" 
+                     <%= 'checked' if @payments_type == 'Usual' || !@payments_type %>/>
               Стандартний
             </label>
             <br/>
             <label class="radio">
-              <input type="radio" name="payOff" value="Equal" />
+              <input type="radio" name="payments_type" value="Equal" 
+                     <%= 'checked' if @payments_type == 'Equal' %>/>
               Ануїтетний (рівними частинами)
             </label>
           </dd>
           <dt>Термін кредиту (в місяцях)</dt>     
-          <dd><input type="text" class="form-control" name="time" placeholder="12" required/></dd>
+          <dd>
+            <input type="text" class="form-control" name="number_of_months" placeholder="12" pattern="\d+"  
+                   value="<%=  @number_of_months || '' %>" required/>
+          </dd>
           <dt>Графік платежів:</dt>
           <dd>
             <button type='submit' class="btn btn-primary">Побудувати</button>
           </dd>
       </dl>
   </form>
+
+  <%= erb(:result, :layout => false) unless !@months %>

@@ -1,2 +1,3 @@
-require "./calc"
+require './calc'
+
 run CalcApp

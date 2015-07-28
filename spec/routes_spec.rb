@@ -1,5 +1,5 @@
 # Test cases for main routes
-describe 'Calc' do
+describe CalcApp do
 
   def app
     @app ||= CalcApp

@@ -1,6 +1,10 @@
 # Calc
+Calculate credit for equal and usual type of credit month payments
 
-### Before
+## Example
+![Example image](https://monosnap.com/file/kBKuw99Pbz47czNgHOF8YACCwgcwc6.png)
+
+### Before launch
 ```
 bundler install
 ```
@@ -12,5 +16,5 @@ rackeup -p {port}
 
 ### To test 
 ```
-ruby tests/test.rb
+rake spec
 ```

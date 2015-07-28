@@ -1,6 +1,6 @@
 # Model for credit operations
 class Credits
-  attr_accessor :number_of_months, :percentages, :ammount
+  attr_reader :number_of_months, :percentages, :ammount
 
   def initialize(number_of_months, percentages, ammount)
     @number_of_months = number_of_months
@@ -14,10 +14,10 @@ class Credits
 
   def with_usual_payments
     months = []
-    ammount_left = @ammount
-    credit_payment = @ammount / number_of_months
+    ammount_left = ammount
+    credit_payment = ammount / number_of_months
     number_of_months.times do
-      percentages_payment = ammount_left * @percentages / number_of_months
+      percentages_payment = ammount_left * percentages / number_of_months
       full_payment = credit_payment + percentages_payment
       ammount_left -= credit_payment
       months << ([credit_payment, percentages_payment, full_payment, ammount_left])
@@ -28,8 +28,8 @@ class Credits
 
   def with_equal_payments
     months = []
-    ammount_left = @ammount
-    full_payment = @ammount * percentages_per_month * (1 + 1 / ((1 + percentages_per_month)**number_of_months - 1))
+    ammount_left = ammount
+    full_payment = ammount * percentages_per_month * (1 + 1 / ((1 + percentages_per_month)**number_of_months - 1))
     number_of_months.times do
       percentages_payment = ammount_left * percentages_per_month
       credit_payment = full_payment - percentages_payment
